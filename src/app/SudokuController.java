@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
-public class sudokuController {
+public class SudokuController {
 	
 	private final static String cellStyleAfterSet = "-fx-text-inner-color: #ff002c;";
 	private Cell[][] sudokuBoard;
@@ -151,25 +151,6 @@ public class sudokuController {
 	
 	private ObservableList<Node> getSudokuBlocks() {
 		return mainGrid.getChildren();
-	}
-	
-	private void validateCellNotDisable(Cell cell) {
-		if (Cell.isNotEmpty(cell) && cell.isDisable()) {
-			showErrorAlert("Cannot edit this cell as it is disabled");
-		}
-	}
-	
-	private void validateDigit(String digit) {
-		if (digit == null || digit.length() != 1) {
-			throw new IllegalArgumentException("Not a digit");
-		}
-		char digitCh = digit.charAt(0);
-		if (digitCh == '0') {
-			throw new IllegalArgumentException("Only digits between 1 to 9 are valid");
-		}
-		if (!Character.isDigit(digitCh)) {
-			throw new IllegalArgumentException("Not a digit");
-		}
 	}
 }
 
