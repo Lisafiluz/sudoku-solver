@@ -7,7 +7,7 @@ namespace ArcConsistencyAlg{
         set<pair<int,int>> S;  // chake if object in queue
         initQueue_Set(G, Q, S);
         
-        while(Q.empty()){
+        while(!Q.empty()){
             pair<int,int>& arc = Q.top();    // arc is pair<int,int>&
             Q.pop();
             if (!arcConsistency(G, arc)){
@@ -75,6 +75,4 @@ namespace ArcConsistencyAlg{
             }
         }
     }
-
-
 };
