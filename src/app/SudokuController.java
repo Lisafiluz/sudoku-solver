@@ -1,5 +1,7 @@
 package app;
 
+import Converters.Converter;
+import Solver.SudokuSolver;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,7 +46,9 @@ public class SudokuController {
 	@FXML
 	public void solvePressed() {
 		solveButton.setDisable(true);
-		// call the solver
+		SudokuSolver sudokuSolver = new SudokuSolver(Converter.convert(sudokuBoard));
+		Integer[][] solution = sudokuSolver.solve();
+		//visualizeSolution(solution);
 	}
 	@FXML
 	public void rufflePressed() {
