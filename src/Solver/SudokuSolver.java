@@ -29,16 +29,110 @@ public class SudokuSolver {
 		return null;
 	}
 	
-	private void AC3_Sudoku(Set<Integer>[][] domains, Queue<Constraint> constraints, Set<Constraint> constraintsHelper) {
-		while (!constraints.isEmpty()) {
-			Constraint constraint = constraints.poll();
+	private void AC3_Sudoku(Set<Integer>[][] domains, Queue<Constraint> constraintsQ, Set<Constraint> constraintsHelper) {
+		while (!constraintsQ.isEmpty()) {
+			Constraint constraint = constraintsQ.poll();
+			constraintsHelper.remove(constraint);
 			Set<Integer> domain = domains[constraint.getRow()][constraint.getCol()];
 			List<Set<Integer>> relatedDomains = getRelatedDomains(constraint, domains);
-			
+			if (!arcConsistency(domain, relatedDomains)){
+				// arcConsistency update the domain if needed
+				// If the constraint is not consistent - update constraints Queue
+				updateConstraints(constraint, constraintsQ, constraintsHelper);
+			}
 			
 		}
 	}
 	
+	private void updateConstraints(Constraint constraint, Queue<Constraint> constraintsQ,
+			Set<Constraint> constraintsHelper) {
+		Constraint.ConstraintType conTypes[] = { Constraint.ConstraintType.ROW, Constraint.ConstraintType.COL, Constraint.ConstraintType.BLOCK };
+		for (ConstraintType constraintType : conTypes) {
+			if (constraintType != constraint.getConstraintType()){
+				AddAllConstraints(constraintType, constraintsQ, constraintsHelper, constraint);
+			}
+		}
+		
+	}
+
+	private void AddAllConstraints(Constraint.ConstraintType constraintType, Queue<Constraint> constraintsQ,
+			Set<Constraint> constraintsHelper, Constraint constraint) {
+		switch (constraintType){
+			case ROW:
+				for (int i = 0; i < getNumberOfColumns(); i++) {
+					if (i != constraint.getCol()) {
+						Constraint c = new Constraint(constraint.getRow(), i, constraintType);
+						if (!constraintsHelper.contains(c)){
+							constraintsHelper.add(c);
+							constraintsQ.add(c);
+						}
+					}
+				}
+				break;
+			case COL:
+				for (int i = 0; i < getNumberOfRows(); i++) {
+					if (i != constraint.getRow()) {
+						Constraint c = new Constraint(i, constraint.getCol(), constraintType);
+						if (!constraintsHelper.contains(c)){
+							constraintsHelper.add(c);
+							constraintsQ.add(c);
+						}
+					}
+				}
+				break;
+			case BLOCK:
+				int startRow = (constraint.getRow() / 3) * 3;
+				int startCol = (constraint.getCol() / 3) * 3;
+				for (int i = startRow; i < startRow + 3; i++) {
+					for (int j = startCol; j < startCol + 3; j++) {
+						if (i != constraint.getRow() && j != constraint.getCol()){
+							Constraint c = new Constraint(i, j, constraintType);
+							if (!constraintsHelper.contains(c)){
+								constraintsHelper.add(c);
+								constraintsQ.add(c);
+							}
+						}
+					}
+				}
+				break;
+		}
+
+	}
+
+	private boolean arcConsistency(Set<Integer> domain, List<Set<Integer>> relatedDomains) {
+		boolean con = true;
+		for (Integer n : domain) {
+			int[] one_to_nine = new int[10];
+			one_to_nine[n] = 1;
+			if (!check_nRecursive(one_to_nine, relatedDomains, 0)){
+				domain.remove(n);
+				con = false;
+			}
+		}
+
+		return con;
+	}
+
+	private boolean check_nRecursive(int[] one_to_nine, List<Set<Integer>> relatedDomains, int i) {
+		if (i == relatedDomains.size()){
+			return true;
+		}
+		
+		for (Integer p : relatedDomains.get(i)) {
+			if (one_to_nine[p] == 0){
+				one_to_nine[p] = 1;
+				if (!check_nRecursive(one_to_nine, relatedDomains, i+1)){
+					one_to_nine[p] = 0;
+				}
+				else{
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
 	private List<Set<Integer>> getRelatedDomains(Constraint constraint, Set<Integer>[][] domains) {
 		List<Set<Integer>> relatedDomains = new ArrayList<>();
 		switch (constraint.getConstraintType()) {

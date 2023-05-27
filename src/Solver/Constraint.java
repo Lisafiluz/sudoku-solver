@@ -26,4 +26,6 @@ public class Constraint {
 	public enum ConstraintType{
 		ROW,COL,BLOCK
 	}
+
+	// TODO: implement comperator for constraint
 }
