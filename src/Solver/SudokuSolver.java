@@ -1,13 +1,19 @@
 package Solver;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import Solver.Constraint.ConstraintType;
+import javafx.util.Pair;
 
 public class SudokuSolver {
 	
@@ -18,17 +24,120 @@ public class SudokuSolver {
 	}
 	
 	public Integer[][] solve() {
-		//Build graph
+		// Build graph
 		Set<Integer>[][] domains = new Set[getNumberOfRows()][getNumberOfColumns()];
 		Queue<Constraint> constraints = new LinkedList<>();
 		Set<Constraint> constraintsHelper = new HashSet<>();
 		init(domains, constraints, constraintsHelper);
+		
+		// AC3
 		AC3_Sudoku(domains, constraints, constraintsHelper);
 		
-		//Search
-		return null;
+		// Search
+		Integer[][] solution = FindSolution(domains);
+		
+		return solution;
 	}
 	
+	private Integer[][] FindSolution(Set<Integer>[][] domains) {
+		// returns solution of the soduko board and null if there is no solution
+		Integer[][] solution = new Integer[9][9];
+		
+		List<Pair<Integer, Integer>> sortedDomains = SortDomains(domains);
+
+		boolean hasSolution = SearchRecursive(domains, sortedDomains, 0, solution);
+		if (hasSolution){ return solution; }
+		return null;
+	}
+
+
+	private List<Pair<Integer, Integer>> SortDomains(Set<Integer>[][] domains) {
+		List<Pair<Set<Integer>, Pair<Integer, Integer>>> lst = new ArrayList<>();
+
+		for (int r = 0; r < getNumberOfRows(); r++){
+			for (int c = 0; c < getNumberOfColumns(); c++){
+				lst.add(new Pair<>(domains[r][c], new Pair<>(r, c)));
+			}
+		}
+
+		Collections.sort(lst, (p1,p2) -> p1.getKey().size() - p2.getKey().size());
+		
+		return lst.stream().map(t->t.getValue()).collect(Collectors.toList());
+	}
+
+	private boolean SearchRecursive(Set<Integer>[][] domains, List<Pair<Integer, Integer>> sortedDomains,
+			int index, Integer[][] solution) {
+				if (index == sortedDomains.size()){
+					return true;
+				}
+
+				Pair<Integer, Integer> p = sortedDomains.get(index);
+				int row = p.getKey();
+				int col = p.getValue();
+				Set<Integer> domain = domains[row][col];
+
+				if (domain.isEmpty()){
+					return false;
+				}
+				
+				for (Integer n : domain) {
+					solution[row][col] = n;
+					List<Pair<Integer, Integer>> restrictedNDomains = RestrictN(domains, n, row, col);;
+					
+					// resorting pairs from index+1
+
+					if (!SearchRecursive(domains, sortedDomains, index+1, solution)){
+						solution[row][col] = 0;
+						RevertN(domains, n, restrictedNDomains);
+					}
+					else{
+						return true;
+					}
+
+				}
+		
+				return false;
+	}
+
+	private void RevertN(Set<Integer>[][] domains, Integer n, List<Pair<Integer, Integer>> restrictedNDomains) {
+		for (Pair<Integer,Integer> pair : restrictedNDomains) {
+			domains[pair.getKey()][pair.getValue()].add(n);
+		}
+	}
+
+	private List<Pair<Integer, Integer>> RestrictN(Set<Integer>[][] domains, Integer n, int row, int col) {
+		List<Pair<Integer, Integer>> restrictedDomains = new ArrayList<>();
+
+		for (int c = 0; c < getNumberOfColumns(); c++){
+			if (c != col){
+				if (domains[row][c].remove(n)){
+					restrictedDomains.add(new Pair<Integer,Integer>(row, c));
+				}
+			}	
+		}
+
+		for (int r = 0; r < getNumberOfRows(); r++){
+			if (r != row){
+				if (domains[r][col].remove(n)){
+					restrictedDomains.add(new Pair<Integer,Integer>(r, col));
+				}
+			}	
+		}
+
+		int startRow = (row / 3) * 3;
+		int startCol = (col / 3) * 3;
+		for (int i = startRow; i < startRow + 3; i++) {
+			for (int j = startCol; j < startCol + 3; j++) {
+				if (i != row && j != col){
+					if (domains[i][j].remove(n)){
+						restrictedDomains.add(new Pair<Integer,Integer>(i, j));
+					}
+				}
+			}
+		}
+		return restrictedDomains;
+	}
+
 	private void AC3_Sudoku(Set<Integer>[][] domains, Queue<Constraint> constraintsQ, Set<Constraint> constraintsHelper) {
 		while (!constraintsQ.isEmpty()) {
 			Constraint constraint = constraintsQ.poll();
