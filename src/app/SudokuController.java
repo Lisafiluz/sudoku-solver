@@ -49,6 +49,17 @@ public class SudokuController {
 		SudokuSolver sudokuSolver = new SudokuSolver(Converter.convert(sudokuBoard));
 		Integer[][] solution = sudokuSolver.solve();
 		//visualizeSolution(solution);
+		for (int i = 0; i < solution.length; i++) {
+			for (int j = 0; j < solution[0].length; j++) {
+				if (sudokuBoard[i][j]== null) {
+					TextField textField = getTextFieldCell(i, j);
+					textField.setText(solution[i][j].toString());
+//					sudokuBoard[i][j] = new Cell(solution[i][j], false, null);
+				}
+				System.out.print(solution[i][j] + " ");
+			}
+			System.out.println();
+		}
 	}
 	@FXML
 	public void rufflePressed() {
@@ -62,7 +73,17 @@ public class SudokuController {
 														 {null, null, 9, 3, null, null, null, 7, 4},
 														 {null, 4, null, null, 5, null, null, 3, 6},
 														 {7, null, 3, null, 1, 8, null, null, null}};
-		fillBoardWithPuzzle(easyBoard);
+		
+		Integer[][] medBoard = {{null, null, null, null, 6, null, 7, null, 1},
+														 {6, null, null, null, 7, null, null, 9, null},
+														 {1, 9, null, null, null, null, 5, null, null},
+														 {8, 2, null, 1, null, null, null, 4, 0},
+														 {null, null, 4, 6, null, 2, 9, null, null},
+														 {null, 5, null, null, null, 3, null, 2, null},
+														 {null, null, 9, 3, null, null, null, 7, 4},
+														 {null, 4, null, null, null, null, null, 3, null},
+														 {7, null, 3, null, 1, 8, null, null, null}};
+		fillBoardWithPuzzle(medBoard);
 	}
 	
 	private void fillBoardWithPuzzle(Integer[][] puzzle) {
