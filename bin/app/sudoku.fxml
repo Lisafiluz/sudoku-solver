@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.*?>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.999-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.SudokuController">
+	<children>
+		<GridPane fx:id="mainGrid" prefHeight="650.0" prefWidth="546.0" style="-fx-border-color: black;">
+			<columnConstraints>
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+			</columnConstraints>
+			<rowConstraints>
+				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+			</rowConstraints>
+			<children>
+				<GridPane style="-fx-border-color: black;">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+					</rowConstraints>
+					<children>
+						<TextField fx:id="00" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" />
+						<TextField fx:id="01" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.columnIndex="1" />
+						<TextField fx:id="02" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.columnIndex="2" />
+						<TextField fx:id="10" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.rowIndex="1" />
+						<TextField fx:id="11" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+						<TextField fx:id="12" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+						<TextField fx:id="20" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.rowIndex="2" />
+						<TextField fx:id="21" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+						<TextField fx:id="22" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+					</children>
+				</GridPane>
+				<GridPane style="-fx-border-color: black;" GridPane.columnIndex="1">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+					</rowConstraints>
+					<children>
+						<TextField fx:id="03" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" />
+						<TextField fx:id="04" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.columnIndex="1" />
+						<TextField fx:id="05" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.columnIndex="2" />
+						<TextField fx:id="13" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.rowIndex="1" />
+						<TextField fx:id="14" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+						<TextField fx:id="15" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+						<TextField fx:id="23" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.rowIndex="2" />
+						<TextField fx:id="24" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+						<TextField fx:id="25" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+					</children>
+				</GridPane>
+				<GridPane style="-fx-border-color: black;" GridPane.columnIndex="2">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+					</rowConstraints>
+					<children>
+						<TextField fx:id="06" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" />
+						<TextField fx:id="07" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.columnIndex="1" />
+						<TextField fx:id="08" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.columnIndex="2" />
+						<TextField fx:id="16" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.rowIndex="1" />
+						<TextField fx:id="17" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+						<TextField fx:id="18" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+						<TextField fx:id="26" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.rowIndex="2" />
+						<TextField fx:id="27" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+						<TextField fx:id="28" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+					</children>
+				</GridPane>
+				<GridPane style="-fx-border-color: black;" GridPane.rowIndex="1">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+					</rowConstraints>
+					<children>
+						<TextField fx:id="30" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" />
+						<TextField fx:id="31" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.columnIndex="1" />
+						<TextField fx:id="32" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.columnIndex="2" />
+						<TextField fx:id="40" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.rowIndex="1" />
+						<TextField fx:id="41" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+						<TextField fx:id="42" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+						<TextField fx:id="50" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.rowIndex="2" />
+						<TextField fx:id="51" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+						<TextField fx:id="52" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+					</children>
+				</GridPane>
+				<GridPane style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+					</rowConstraints>
+					<children>
+						<TextField fx:id="33" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" />
+						<TextField fx:id="34" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.columnIndex="1" />
+						<TextField fx:id="35" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.columnIndex="2" />
+						<TextField fx:id="43" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.rowIndex="1" />
+						<TextField fx:id="44" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+						<TextField fx:id="45" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+						<TextField fx:id="53" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.rowIndex="2" />
+						<TextField fx:id="54" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+						<TextField fx:id="55" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+					</children>
+				</GridPane>
+				<GridPane style="-fx-border-color: black;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+					</rowConstraints>
+					<children>
+						<TextField fx:id="36" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" />
+						<TextField fx:id="37" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.columnIndex="1" />
+						<TextField fx:id="38" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.columnIndex="2" />
+						<TextField fx:id="46" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.rowIndex="1" />
+						<TextField fx:id="47" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+						<TextField fx:id="48" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+						<TextField fx:id="56" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.rowIndex="2" />
+						<TextField fx:id="57" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+						<TextField fx:id="58" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+					</children>
+				</GridPane>
+				<GridPane style="-fx-border-color: black;" GridPane.rowIndex="2">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+					</rowConstraints>
+					<children>
+						<TextField fx:id="60" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" />
+						<TextField fx:id="61" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.columnIndex="1" />
+						<TextField fx:id="62" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.columnIndex="2" />
+						<TextField fx:id="70" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.rowIndex="1" />
+						<TextField fx:id="71" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+						<TextField fx:id="72" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+						<TextField fx:id="80" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.rowIndex="2" />
+						<TextField fx:id="81" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+						<TextField fx:id="82" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+					</children>
+				</GridPane>
+				<GridPane style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+					</rowConstraints>
+					<children>
+						<TextField fx:id="63" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" />
+						<TextField fx:id="64" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.columnIndex="1" />
+						<TextField fx:id="65" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.columnIndex="2" />
+						<TextField fx:id="73" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.rowIndex="1" />
+						<TextField fx:id="74" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+						<TextField fx:id="75" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+						<TextField fx:id="83" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.rowIndex="2" />
+						<TextField fx:id="84" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+						<TextField fx:id="85" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+					</children>
+				</GridPane>
+				<GridPane style="-fx-border-color: black;" GridPane.columnIndex="2" GridPane.rowIndex="2">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+					</rowConstraints>
+					<children>
+						<TextField fx:id="66" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" />
+						<TextField fx:id="67" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.columnIndex="1" />
+						<TextField fx:id="68" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.columnIndex="2" />
+						<TextField fx:id="76" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.rowIndex="1" />
+						<TextField fx:id="77" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+						<TextField fx:id="78" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+						<TextField fx:id="86" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.rowIndex="2" />
+						<TextField fx:id="87" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+						<TextField fx:id="88" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEnter" prefHeight="37.0" prefWidth="37.0" style="-fx-border-color: black; -fx-background-color: #D3D3D3;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+					</children>
+				</GridPane>
+			</children>
+		</GridPane>
+		<HBox alignment="TOP_CENTER" prefHeight="350.0" prefWidth="600.0">
+			<children>
+				<Button fx:id="setButton" mnemonicParsing="false" onAction="#setPressed" prefHeight="38.0" prefWidth="76.0" text="Set">
+					<HBox.margin>
+						<Insets right="25.0" top="5.0"/>
+					</HBox.margin>
+				</Button>
+				<Button mnemonicParsing="false" onAction="#clearPressed" prefHeight="38.0" prefWidth="75.0" text="Clear">
+					<HBox.margin>
+						<Insets right="25.0" top="5.0"/>
+					</HBox.margin>
+				</Button>
+				<Button fx:id="solveButton" mnemonicParsing="false" onAction="#solvePressed" prefHeight="38.0" prefWidth="76.0" text="Solve">
+					<HBox.margin>
+						<Insets right="25.0" top="5.0"/>
+					</HBox.margin>
+				</Button>
+				<Button mnemonicParsing="false" onAction="#rufflePressed" prefHeight="38.0" prefWidth="76.0" text="Ruffle">
+					<HBox.margin>
+						<Insets top="5.0"/>
+					</HBox.margin>
+				</Button>
+			</children>
+		</HBox>
+	</children>
+</VBox>
