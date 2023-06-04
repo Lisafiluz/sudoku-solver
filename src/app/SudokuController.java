@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
+
 public class SudokuController {
 	
 	private final static String cellStyleAfterSet = "-fx-text-inner-color: #ff002c;";
