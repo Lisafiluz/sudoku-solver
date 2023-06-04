@@ -7,7 +7,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
@@ -51,6 +53,13 @@ public class SudokuController {
 		Integer[][] solution = sudokuSolver.solve();
 		System.out.println(String.format("Execution time: %sms", System.currentTimeMillis() - time0));
 		//visualizeSolution(solution);
+		
+		if (solution == null) {
+			Alert noSolution = new Alert(AlertType.NONE, "No Solution for this sudoku board", ButtonType.APPLY);
+			noSolution.show();
+			return;
+		}
+		
 		for (int i = 0; i < solution.length; i++) {
 			for (int j = 0; j < solution[0].length; j++) {
 				if (sudokuBoard[i][j]== null) {
@@ -69,7 +78,7 @@ public class SudokuController {
 		Integer[][] easyBoard = {{null, null, null, 2, 6, null, 7, null, 1},
 														 {6, 8, null, null, 7, null, null, 9, null},
 														 {1, 9, null, null, null, 4, 5, null, null},
-														 {8, 2, null, 1, null, null, null, 4, 0},
+														 {8, 2, null, 1, null, null, null, 4, 7},
 														 {null, null, 4, 6, null, 2, 9, null, null},
 														 {null, 5, null, null, null, 3, null, 2, 8},
 														 {null, null, 9, 3, null, null, null, 7, 4},
@@ -87,28 +96,7 @@ public class SudokuController {
 				{null, null, null, 6, null, 2, null, null, null},
 				{null, 3, 6, null, null, null, 4, 1, null}
 		};
-		Integer[][] medBoardSolution = {
-				{5, 2, 3, 6, 4, 9, 7, 8, 1},
-				{1, 6, 9, 2, 8, 7, 5, 4, 3},
-				{7, 8, 4, 3, 5, 1, 2, 9, 6},
-				{6, 9, 8, 5, 2, 3, 1, 7, 4},
-				{4, 1, 2, 7, 9, 6, 8, 3, 5},
-				{3, 5, 7, 9, 1, 4, 6, 2, 8},
-				{2, 7, 5, 1, 6, 9, 3, 5, 4},
-				{9, 4, 1, 6, 3, 2, 5, 6, 7},
-				{8, 3, 6, 4, 7, 5, 4, 1, 9}
-		};
-		Integer[][] hardBoardSolution = {
-				{5, 6, 1, 7, 4, 2, 8, 9, 3},
-				{9, 4, 8, 1, 3, 6, 9, 5, 7},
-				{2, 3, 7, 9, 5, 8, 1, 6, 4},
-				{6, 9, 5, 3, 8, 1, 7, 4, 2},
-				{8, 1, 7, 2, 9, 4, 6, 3, 5},
-				{3, 2, 4, 6, 7, 5, 2, 8, 9},
-				{4, 5, 2, 8, 1, 3, 5, 7, 6},
-				{7, 8, 6, 5, 2, 9, 4, 1, 3},
-				{1, 7, 3, 4, 6, 7, 9, 2, 8}
-		};
+
 		Integer[][] hardBoard = {
 				{null, null, null, 7, null, 2, null, null, null},
 				{null, null, null, 1, null, null, 9, null, 7},
@@ -121,7 +109,31 @@ public class SudokuController {
 				{null, null, null, 4, null, 7, null, null, null}
 		};
 		
-		fillBoardWithPuzzle(easyBoard);
+		Integer[][] hardBoard_sparse = {
+				{null, null, null, null, null, 2, null, null, null},
+				{null, null, null, 1, null, null, null, null, 7},
+				{2, null, null, null, null, null, null, null, null},
+				{null, null, 5, null, null, null, 7, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, 2, null, null},
+				{null, null, 2, null, null, null, null, null, 6},
+				{7, null, null, null, null, 9, null, null, null},
+				{null, null, null, 4, null, null, null, null, null}
+		};
+		
+		Integer[][] noSolutionBoard = {
+				{null, null, null, 7, null, 2, null, 8, null},
+				{null, null, null, 1, null, null, 9, null, 7},
+				{2, null, null, null, null, null, 1, null, 4},
+				{null, null, 5, null, null, null, 7, null, null},
+				{null, null, 7, null, null, null, 6, null, null},
+				{null, null, 4, null, null, null, 2, null, null},
+				{4, null, 2, null, null, 8, null, null, 6},
+				{7, null, 6, null, null, 9, null, null, 8},
+				{null, 8, null, 4, null, 7, null, null, null}
+		};
+		
+		fillBoardWithPuzzle(hardBoard_sparse);
 	}
 	
 	private void fillBoardWithPuzzle(Integer[][] puzzle) {

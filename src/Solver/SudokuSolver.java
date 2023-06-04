@@ -33,12 +33,11 @@ public class SudokuSolver {
 		AC3_Sudoku(domains, constraints, constraintsHelper);
 		
 		// Search
-		
 		return FindSolution(domains);
 	}
 	
 	private Integer[][] FindSolution(Set<Integer>[][] domains) {
-		// returns solution of the soduko board and null if there is no solution
+		// returns solution of the sudoku board and null if there is no solution
 		Integer[][] solution = new Integer[9][9];
 		
 		List<Pair<Integer, Integer>> sortedDomains = SortDomains(domains);
@@ -73,18 +72,18 @@ public class SudokuSolver {
 		Pair<Integer, Integer> p = sortedDomains.get(index);
 		int row = p.getKey();
 		int col = p.getValue();
-		Set<Integer> domain = domains[row][col];
+		Set<Integer> domain = new HashSet<>(domains[row][col]);
 		
 		if (domain.isEmpty()) {
 			return false;
 		}
+		
 		
 		for (Integer n : domain) {
 			solution[row][col] = n;
 			List<Pair<Integer, Integer>> restrictedNDomains = RestrictN(domains, n, row, col);
 			
 			// resorting pairs from index+1
-			
 			if (!SearchRecursive(domains, sortedDomains, index + 1, solution)) {
 				solution[row][col] = 0;
 				RevertN(domains, n, restrictedNDomains);
