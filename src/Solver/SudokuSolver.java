@@ -29,11 +29,17 @@ public class SudokuSolver {
 		Set<Constraint> constraintsHelper = new HashSet<>();
 		init(domains, constraints, constraintsHelper);
 		
-		// AC3
-		AC3_Sudoku(domains, constraints, constraintsHelper);
+		long time0 = System.currentTimeMillis();
+			// AC3
+			AC3_Sudoku(domains, constraints, constraintsHelper);
+		System.out.println(String.format("Execution AC3 time: %sms", System.currentTimeMillis() - time0));
 		
-		// Search
-		return FindSolution(domains);
+		time0 = System.currentTimeMillis();
+			// Search
+			Integer[][] sol = FindSolution(domains);
+		System.out.println(String.format("Execution Search time: %sms", System.currentTimeMillis() - time0));
+		
+		return sol;
 	}
 	
 	private Integer[][] FindSolution(Set<Integer>[][] domains) {
@@ -41,7 +47,7 @@ public class SudokuSolver {
 		Integer[][] solution = new Integer[9][9];
 		
 		List<Pair<Integer, Integer>> sortedDomains = SortDomains(domains);
-		
+
 		boolean hasSolution = SearchRecursive(domains, sortedDomains, 0, solution);
 		if (hasSolution) {
 			return solution;

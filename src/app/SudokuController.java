@@ -49,9 +49,9 @@ public class SudokuController {
 	public void solvePressed() {
 		solveButton.setDisable(true);
 		SudokuSolver sudokuSolver = new SudokuSolver(Converter.convert(sudokuBoard));
-		long time0 = System.currentTimeMillis();
+//		long time0 = System.currentTimeMillis();
 		Integer[][] solution = sudokuSolver.solve();
-		System.out.println(String.format("Execution time: %sms", System.currentTimeMillis() - time0));
+//		System.out.println(String.format("Execution time: %sms", System.currentTimeMillis() - time0));
 		//visualizeSolution(solution);
 		
 		if (solution == null) {
